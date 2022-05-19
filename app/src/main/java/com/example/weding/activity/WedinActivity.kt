@@ -1,17 +1,17 @@
 package com.example.weding.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Adapter
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
 import com.example.weding.activity.database.DataEvent
 import kotlinx.android.synthetic.main.activity_wedin.*
-import kotlinx.android.synthetic.main.event_list.*
+
 
 class WedinActivity : AppCompatActivity() {
     private var clicked = false
@@ -127,7 +127,7 @@ class WedinActivity : AppCompatActivity() {
             onAddButtonClicked()
         }
         edit_floating_button.setOnClickListener {
-            Toast.makeText(this, "Edit Button Clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ContentActivity::class.java))
         }
     }
 

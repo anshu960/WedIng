@@ -1,5 +1,6 @@
 package com.example.weding.activity.database
 
+import android.accounts.AccountManager.KEY_PASSWORD
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -13,19 +14,17 @@ class DatabaseHandler(context: Context) :
           private const val TABLE_WED = "WedingTable"
 
            private const val KEY_ID = "_id"
-           private const val KEY_PASSWORD = "password"
-           private const val KEY_MOBILE = "mobile"
            private const val KEY_USER = "user"
            private const val KEY_COUPLE = "couple1"
            private const val KEY_COUPLE2 = "couple2"
            private const val KEY_ADDRESS = "address"
+           private const val KEY_DATE = "date"
        }
 
     override fun onCreate(db: SQLiteDatabase?) {
         val WEDDIN_TABLE = ("CREATE TABLE " + TABLE_WED +
                                      KEY_ID + " INTEGER PRIMARY KEY,"
-                                    + KEY_MOBILE + " TEXT,"
-                                    + KEY_PASSWORD + " TEXT,"
+                                    + KEY_DATE + " TEXT,"
                                     + KEY_COUPLE + " TEXT,"
                                     + KEY_COUPLE2 + " TEXT,"
                                     + KEY_ADDRESS + " TEXT"
@@ -41,10 +40,11 @@ class DatabaseHandler(context: Context) :
     fun addWedding(wedding: DataEvent): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(KEY_ID, wedding.address)
-        contentValues.put(KEY_MOBILE, wedding.coupleName1)
-        contentValues.put(KEY_PASSWORD, wedding.coupleName2)
-        contentValues.put(KEY_USER, wedding.date)
+        contentValues.put(KEY_ID, wedding._id)
+        contentValues.put(KEY_ADDRESS, wedding.address)
+        contentValues.put(KEY_COUPLE, wedding.coupleName1)
+        contentValues.put(KEY_COUPLE2, wedding.coupleName2)
+        contentValues.put(KEY_DATE, wedding.date)
 
         val result = db.insert(TABLE_WED, null, contentValues)
         db.close()
