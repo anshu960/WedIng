@@ -3,32 +3,35 @@ package com.example.weding.activity.database
 import android.accounts.AccountManager.KEY_PASSWORD
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
+import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.os.FileObserver.CREATE
 
 class DatabaseHandler(context: Context) :
-   SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
-       companion object{
-          private const val DATABASE_NAME = "WedingDatabase"
-          private const val DATABASE_VERSION = 1
-          private const val TABLE_WED = "WedingTable"
+   SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    companion object {
+        private const val DATABASE_NAME = "WedingDatabase"
+        private const val DATABASE_VERSION = 1
+        private const val TABLE_WED = "WedingTable"
 
-           private const val KEY_ID = "_id"
-           private const val KEY_USER = "user"
-           private const val KEY_COUPLE = "couple1"
-           private const val KEY_COUPLE2 = "couple2"
-           private const val KEY_ADDRESS = "address"
-           private const val KEY_DATE = "date"
-       }
+        private var KEY_ID = "_id"
+        private const val KEY_USER = "user"
+        private const val KEY_COUPLE = "couple1"
+        private const val KEY_COUPLE2 = "couple2"
+        private const val KEY_ADDRESS = "address"
+        private const val KEY_DATE = "date"
+    }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val WEDDIN_TABLE = ("CREATE TABLE " + TABLE_WED +
-                                     KEY_ID + " INTEGER PRIMARY KEY,"
-                                    + KEY_DATE + " TEXT,"
-                                    + KEY_COUPLE + " TEXT,"
-                                    + KEY_COUPLE2 + " TEXT,"
-                                    + KEY_ADDRESS + " TEXT"
-                                    + KEY_USER + " TEXT)" )
+        val WEDDIN_TABLE = ("CREATE TABLE " + TABLE_WED + "("
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_DATE + " TEXT,"
+                + KEY_COUPLE + " TEXT,"
+                + KEY_COUPLE2 + " TEXT,"
+                + KEY_ADDRESS + " TEXT"
+                + KEY_USER + " TEXT)")
         db?.execSQL(WEDDIN_TABLE)
 
     }
@@ -37,7 +40,8 @@ class DatabaseHandler(context: Context) :
         db!!.execSQL("DROP TABLE IF EXISTS $TABLE_WED")
         onCreate(db)
     }
-    fun addWedding(wedding: DataEvent): Long {
+
+    fun addWedding(wedding: SqliteDatabase): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(KEY_ID, wedding._id)
@@ -49,5 +53,11 @@ class DatabaseHandler(context: Context) :
         val result = db.insert(TABLE_WED, null, contentValues)
         db.close()
         return result
+
+        }
     }
-}
+
+
+
+
+

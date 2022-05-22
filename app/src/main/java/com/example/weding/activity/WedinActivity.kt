@@ -10,6 +10,7 @@ import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
 import com.example.weding.activity.database.DataEvent
+import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.activity_wedin.*
 
 
@@ -48,7 +49,8 @@ class WedinActivity : AppCompatActivity() {
         val list = ArrayList<DataEvent>()
         val adapterevent: Adapter?
         edit_floating_button.setOnClickListener { view ->
-
+            val intent = Intent(this, ContentActivity::class.java)
+            startActivity(intent)
         }
 
         list.add(
@@ -56,7 +58,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse2, "Anshu Singh",
                 "Nisha Singh",
                 "08 Dec 2020",
-                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052"
+                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052",0
             )
         )
         list.add(
@@ -64,7 +66,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse3, "Manik Kathuriya",
                 "Anupriya Sharma",
                 "20 Feb 2020",
-                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052"
+                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052",1
             )
         )
         list.add(
@@ -72,7 +74,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse4, "Deepali Kathuriya",
                 "Ayush Sharma",
                 "12 March 2020",
-                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052"
+                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052",2
             )
         )
         list.add(
@@ -80,7 +82,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse2, "Rahul Kathuriya",
                 "Priya Sharma",
                 "12 June 2010",
-                "Village+P.O- Nagpura, Police Station- Simari, District- Buxar 802118"
+                "Village+P.O- Nagpura, Police Station- Simari, District- Buxar 802118",3
             )
         )
 
@@ -89,7 +91,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse2, "Anshu Singh",
                 "Nisha Singh",
                 "08 Dec 2020",
-                "N/20 Professor Colony, near Orange Inn Munna Chowk Patna, Kankarbagh Patna 20"
+                "N/20 Professor Colony, near Orange Inn Munna Chowk Patna, Kankarbagh Patna 20",4
             )
         )
         list.add(
@@ -97,7 +99,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse3, "Manik Kathuriya",
                 "Anupriya Sharma",
                 "20 Feb 2020",
-                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052"
+                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052",5
             )
         )
         list.add(
@@ -105,7 +107,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse4, "Deepali Kathuriya",
                 "Ayush Sharma",
                 "12 March 2020",
-                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052"
+                "13 wazirpur press area, near dd motors Wazirpur, New Delhi, Delhi 110052",6
             )
         )
         list.add(
@@ -113,7 +115,7 @@ class WedinActivity : AppCompatActivity() {
                 R.drawable.ellipse2, "Rahul Kathuriya",
                 "Priya Sharma",
                 "12 June 2010",
-                "Village+P.O- Nagpura, Police Station- Simari, District- Buxar 802118"
+                "Village+P.O- Nagpura, Police Station- Simari, District- Buxar 802118",7
             )
         )
 
