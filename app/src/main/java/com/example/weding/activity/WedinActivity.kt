@@ -10,7 +10,6 @@ import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
 import com.example.weding.activity.database.DataEvent
-import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.activity_wedin.*
 
 
@@ -48,7 +47,7 @@ class WedinActivity : AppCompatActivity() {
         supportActionBar!!.hide()
         val list = ArrayList<DataEvent>()
         val adapterevent: Adapter?
-        edit_floating_button.setOnClickListener { view ->
+        edit_floating_button.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
             startActivity(intent)
         }
