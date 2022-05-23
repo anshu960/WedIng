@@ -37,7 +37,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             onBackPressed()
         }
         dateSetListener = DatePickerDialog.OnDateSetListener {
-                view, year, month, dayOfMonth ->
+                _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, month)
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -61,7 +61,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                 val pictureDialogItems = arrayOf("Select photo from Gallery",
                                                  "Capture photo from Camera")
                 pictureDialog.setItems(pictureDialogItems){
-                    dialog, which ->
+                        _, which ->
                     when(which){
                         0 -> choosePhotoFromGallery()
                         1 -> Toast.makeText(
@@ -98,11 +98,11 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-                TODO("Not yet implemented")
+
             }
 
 
