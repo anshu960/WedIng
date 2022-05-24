@@ -14,7 +14,6 @@ import android.view.View
 import android.widget.Toast
 import com.example.weding.R
 import com.karumi.dexter.Dexter
-import com.karumi.dexter.DexterBuilder
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -55,7 +54,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
             }
-            R.id.iv_image ->{
+            R.id.tv_add_image ->{
                 val pictureDialog = AlertDialog.Builder(this)
                 pictureDialog.setTitle("Select Action")
                 val pictureDialogItems = arrayOf("Select photo from Gallery",
@@ -127,7 +126,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     dialog.dismiss()
                 }.show()
             }
-        }).check()
+        }).onSameThread().check()
 
     }
 
@@ -136,10 +135,6 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
         date.setText(sdf.format(cal.time).toString())
     }
-}
-
-private fun DexterBuilder.SinglePermissionListener.withListener(multiplePermissionsListener: MultiplePermissionsListener) {
-
 }
 
 
