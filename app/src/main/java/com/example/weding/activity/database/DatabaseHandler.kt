@@ -18,6 +18,7 @@ class DatabaseHandler(context: Context) :
         private const val KEY_COUPLE2 = "couple2"
         private const val KEY_ADDRESS = "address"
         private const val KEY_DATE = "date"
+        private const val KEY_IMAGE = "image"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -26,7 +27,8 @@ class DatabaseHandler(context: Context) :
                 + KEY_DATE + " TEXT,"
                 + KEY_COUPLE + " TEXT,"
                 + KEY_COUPLE2 + " TEXT,"
-                + KEY_ADDRESS + " TEXT"
+                + KEY_ADDRESS + " TEXT,"
+                + KEY_IMAGE + " TEXT"
                 + KEY_USER + " TEXT)")
         db?.execSQL(WEDDIN_TABLE)
 
@@ -45,6 +47,7 @@ class DatabaseHandler(context: Context) :
         contentValues.put(KEY_COUPLE, wedding.coupleName1)
         contentValues.put(KEY_COUPLE2, wedding.coupleName2)
         contentValues.put(KEY_DATE, wedding.date)
+        contentValues.put(KEY_IMAGE, wedding.image)
 
         val result = db.insert(TABLE_WED, null, contentValues)
         db.close()
