@@ -78,10 +78,9 @@ private fun choosePhotoFromGallery(){
         override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
 
                 if (report!!.areAllPermissionsGranted()){
-                    Toast.makeText(this@ContentActivity,
-                        "Storage READ/WRITE permission are granted. Now you can select an image from GALLERY",
-                        Toast.LENGTH_SHORT)
-                        .show()
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(intent, GALLERY)
                 }
 
             }
@@ -120,6 +119,10 @@ private fun choosePhotoFromGallery(){
         val myFormat = "dd.MM.yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
         date.setText(sdf.format(cal.time).toString())
+    }
+    companion object{
+        private const val GALLERY = 1
+        private const val CAMERA = 2
     }
 }
 
