@@ -12,8 +12,7 @@ class DatabaseHandler(context: Context) :
         private const val DATABASE_VERSION = 1
         private const val TABLE_WED = "WedingTable"
 
-        private var KEY_ID = "_id"
-        private const val KEY_USER = "user"
+        private const val KEY_ID = "_id"
         private const val KEY_COUPLE = "couple1"
         private const val KEY_COUPLE2 = "couple2"
         private const val KEY_ADDRESS = "address"
@@ -28,8 +27,7 @@ class DatabaseHandler(context: Context) :
                 + KEY_COUPLE + " TEXT,"
                 + KEY_COUPLE2 + " TEXT,"
                 + KEY_ADDRESS + " TEXT,"
-                + KEY_IMAGE + " TEXT"
-                + KEY_USER + " TEXT)")
+                + KEY_IMAGE + " TEXT)")
         db?.execSQL(WEDDIN_TABLE)
 
     }
@@ -42,7 +40,7 @@ class DatabaseHandler(context: Context) :
     fun addWedding(wedding: SqliteDatabase): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(KEY_ID, wedding._id)
+      //  contentValues.put(KEY_ID, wedding._id)
         contentValues.put(KEY_ADDRESS, wedding.address)
         contentValues.put(KEY_COUPLE, wedding.coupleName1)
         contentValues.put(KEY_COUPLE2, wedding.coupleName2)

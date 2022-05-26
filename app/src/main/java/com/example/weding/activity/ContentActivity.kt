@@ -20,6 +20,8 @@ import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.weding.R
+import com.example.weding.activity.database.DatabaseHandler
+import com.example.weding.activity.database.SqliteDatabase
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -37,6 +39,9 @@ import java.util.*
 class ContentActivity : AppCompatActivity(), View.OnClickListener {
     private var cal = Calendar.getInstance()
     private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
+    private var saveImageToInternalStorage : Uri? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content)
@@ -50,8 +55,10 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             updateDateInView()
         }
+        updateDateInView()
         date.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
+        btn_save.setOnClickListener(this)
 
     }
 
@@ -80,8 +87,42 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                  }
                  pictureDialog.show()
              }
+            R.id.btn_save ->{
+                when {
+                    name_et.text.isNullOrEmpty() -> {
+                        Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
+                    }
+                    couple_et.text.isNullOrEmpty() -> {
+                        Toast.makeText(this, "Please enter your couple's name", Toast.LENGTH_SHORT).show()
+                    }
+                    et_address.text.isNullOrEmpty() -> {
+                        Toast.makeText(this, "Please enter your Address", Toast.LENGTH_SHORT).show()
+                    }
+                    saveImageToInternalStorage == null ->{
+                        Toast.makeText(this, "Please select an Image", Toast.LENGTH_SHORT).show()
+                    }else ->{
+                        val sqliteDatabase = SqliteDatabase(
+                            name_et.text.toString(),
+                            saveImageToInternalStorage.toString(),
+                            couple_et.text.toString(),
+                            et_address.text.toString(),
+                            0,
+                            date.text.toString()
+                        )
+                    val dbHandler = DatabaseHandler(this)
+                    val addWedding = dbHandler.addWedding(sqliteDatabase)
+                    if (addWedding > 0){
+                        Toast.makeText(this,
+                        "The Event details are inserted successfully.",
+                        Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    }
+                }
+            }
         }
     }
+
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
