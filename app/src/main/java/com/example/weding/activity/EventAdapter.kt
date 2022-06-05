@@ -29,9 +29,7 @@ open class EventAdapter (
             holder.itemView.couple.text = model.coupleName
             holder.itemView.couple2.text = model.coupleName2
             holder.itemView.address.text = model.address
-
-
-
+            holder.itemView.date_txt.text = model.date
         }
     }
 

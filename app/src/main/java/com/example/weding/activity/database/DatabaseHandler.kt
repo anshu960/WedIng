@@ -83,9 +83,6 @@ class DatabaseHandler(context: Context) :
             db.execSQL(selectQuery)
             return ArrayList()
         }
-
-
-
         return eventList
     }
 
