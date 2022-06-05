@@ -3,4 +3,7 @@
     <string name="already_account">already_account</string>
     <string name="Register">Register</string>
     <string name="guest">guest</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="no_event_found_yet">No Event Found yet. Kindly add one.</string>
 </resources>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.weding">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -16,12 +17,13 @@
         <activity
             android:name=".activity.ContentActivity"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activity.WedinActivity"/>
         <activity
             android:name=".activity.WedingActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.WedinActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
@@ -32,9 +34,6 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.WedinActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MainActivity"
+            tools:ignore="MissingClass" />
     </application>
 
 </manifest>

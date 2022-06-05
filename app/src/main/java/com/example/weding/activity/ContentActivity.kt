@@ -1,7 +1,6 @@
 package com.example.weding.activity
 
 
-import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
@@ -16,7 +15,6 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
-import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.weding.R
@@ -28,6 +26,7 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_content.*
+import kotlinx.android.synthetic.main.event_list.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -46,9 +45,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolBar.setNavigationOnClickListener {
-            onBackPressed()
-        }
+
         dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
             cal.set(Calendar.MONTH, month)
@@ -56,7 +53,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             updateDateInView()
         }
         updateDateInView()
-        date.setOnClickListener(this)
+        date_et.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
         btn_save.setOnClickListener(this)
 
@@ -102,12 +99,12 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                         Toast.makeText(this, "Please select an Image", Toast.LENGTH_SHORT).show()
                     }else ->{
                         val sqliteDatabase = SqliteDatabase(
-                            name_et.text.toString(),
-                            saveImageToInternalStorage.toString(),
-                            couple_et.text.toString(),
-                            et_address.text.toString(),
                             0,
-                            date.text.toString()
+                           name_et.text.toString(),
+                            couple_et.text.toString(),
+                            date.text.toString(),
+                            address.text.toString(),
+                            ImageView.toString()
                         )
                     val dbHandler = DatabaseHandler(this)
                     val addWedding = dbHandler.addWedding(sqliteDatabase)
@@ -132,7 +129,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     val contentURI = data.data
                     try {
                         val selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
-                        saveImageToInternalStorage(selectedImageBitmap)
+                       saveImageToInternalStorage =  saveImageToInternalStorage(selectedImageBitmap)
 
                         ImageView.setImageBitmap(selectedImageBitmap)
                     }catch (e: IOException){
@@ -197,7 +194,8 @@ private fun choosePhotoFromGallery(){
     }
     private fun saveImageToInternalStorage(bitmap: Bitmap):Uri{
         val wrapper = ContextWrapper(applicationContext)
-        var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+        var file = wrapper.getDir( "WedInImages", Context.MODE_PRIVATE)
+        //  var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
         file = File(file,"${UUID.randomUUID()}.jpg")
 
         try {

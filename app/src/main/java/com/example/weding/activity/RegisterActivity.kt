@@ -9,7 +9,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity(), View.OnClickListener {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var textInputEditText: TextInputEditText
     private lateinit var textInputLayout: TextInputLayout
@@ -20,10 +20,6 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_register)
 
         supportActionBar!!.hide()
-
-    }
-
-    override fun onClick(v: View?) {
 
     }
 }

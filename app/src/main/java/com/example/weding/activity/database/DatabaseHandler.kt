@@ -1,8 +1,11 @@
 package com.example.weding.activity.database
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 
 class DatabaseHandler(context: Context) :
@@ -40,9 +43,8 @@ class DatabaseHandler(context: Context) :
     fun addWedding(wedding: SqliteDatabase): Long {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-      //  contentValues.put(KEY_ID, wedding._id)
         contentValues.put(KEY_ADDRESS, wedding.address)
-        contentValues.put(KEY_COUPLE, wedding.coupleName1)
+        contentValues.put(KEY_COUPLE, wedding.coupleName)
         contentValues.put(KEY_COUPLE2, wedding.coupleName2)
         contentValues.put(KEY_DATE, wedding.date)
         contentValues.put(KEY_IMAGE, wedding.image)
@@ -51,10 +53,43 @@ class DatabaseHandler(context: Context) :
         db.close()
         return result
 
-        }
     }
 
 
+    @SuppressLint("Range")
+    fun eventList(): ArrayList<SqliteDatabase> {
+        val eventList = ArrayList<SqliteDatabase>()
+        val selectQuery = "SELECT * FROM $TABLE_WED"
+        val db = this.readableDatabase
+        val cursor: Cursor? = null
+
+        try {
+          val cursor: Cursor =  db.rawQuery(selectQuery, null)
+            if (cursor.moveToFirst()){
+                do {
+                    val place = SqliteDatabase(
+                        cursor.getInt(cursor.getColumnIndex(KEY_ID)),
+                        cursor.getString(cursor.getColumnIndex(KEY_COUPLE)),
+                        cursor.getString(cursor.getColumnIndex(KEY_COUPLE2)),
+                        cursor.getString(cursor.getColumnIndex(KEY_DATE)),
+                        cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
+                        cursor.getString(cursor.getColumnIndex(KEY_IMAGE))
+                            )
+                    eventList.add(place)
+                }while (cursor.moveToNext())
+            }
+            cursor.close()
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
+
+
+
+        return eventList
+    }
+
+}
 
 
 
