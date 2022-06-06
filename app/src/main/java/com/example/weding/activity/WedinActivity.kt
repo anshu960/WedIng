@@ -59,9 +59,9 @@ class WedinActivity : AppCompatActivity() {
         Add_btn.setOnClickListener {
             onAddButtonClicked()
         }
-        edit_floating_button.setOnClickListener {
+       /* edit_floating_button.setOnClickListener {
             startActivity(Intent(this, ContentActivity::class.java))
-        }
+        }*/
 
     }
 
