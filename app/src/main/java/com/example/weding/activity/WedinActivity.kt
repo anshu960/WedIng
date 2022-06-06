@@ -48,16 +48,16 @@ class WedinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_wedin)
 
         supportActionBar!!.hide()
-        val list = ArrayList<DataEvent>()
-        val adapterevent: Adapter?
+       // val list = ArrayList<DataEvent>()
+       // val adapterevent: Adapter?
         edit_floating_button.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
             startActivity(intent)
         }
 
-        adapterevent = Adapter(list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapterevent
+       // adapterevent = Adapter(list)
+      //  recyclerView.layoutManager = LinearLayoutManager(this)
+      //  recyclerView.adapter = adapterevent
 
 
         Add_btn.setOnClickListener {
@@ -66,7 +66,7 @@ class WedinActivity : AppCompatActivity() {
         edit_floating_button.setOnClickListener {
             startActivity(Intent(this, ContentActivity::class.java))
         }
-        getEventListDB()
+        //getEventListDB()
     }
 
     private fun onAddButtonClicked() {
@@ -92,7 +92,7 @@ class WedinActivity : AppCompatActivity() {
             Add_btn.startAnimation(rotateClose)
         }
     }
-    private fun setEventRecyclerView(eventList: ArrayList<SqliteDatabase>) {
+   /* private fun setEventRecyclerView(eventList: ArrayList<SqliteDatabase>) {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
         val Adapter = EventAdapter(this, eventList)
@@ -110,7 +110,7 @@ class WedinActivity : AppCompatActivity() {
                 tv_no_record_available.visibility = View.VISIBLE
         }
 
-    }
+    } */
 }
 
 

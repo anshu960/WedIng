@@ -1,6 +1,7 @@
 package com.example.weding.activity
 
 
+import android.Manifest
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
@@ -77,9 +78,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                          _, which ->
                      when(which){
                          0 -> choosePhotoFromGallery()
-                             1 -> Toast.makeText(this@ContentActivity,
-                         "Camera selection coming soon...",
-                         Toast.LENGTH_SHORT).show()
+                             1 -> takePhotoFromCamera()
                      }
                  }
                  pictureDialog.show()
@@ -138,21 +137,51 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     }
 
                 }
+            }else if (requestCode == CAMERA_CODE){
+                val photo : Bitmap = data!!.extras!!.get("data") as Bitmap
+                saveImageToInternalStorage = saveImageToInternalStorage(photo)
+                ImageView.setImageBitmap(photo)
             }
         }
     }
 
+    private fun takePhotoFromCamera(){
+        Dexter.withActivity(this).withPermissions(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA
+        ).withListener(object: MultiplePermissionsListener{
+            override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+
+                if (report!!.areAllPermissionsGranted()){
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(intent, CAMERA_CODE)
+                }
+
+            }
+
+
+            override fun onPermissionRationaleShouldBeShown(
+                permissions: MutableList<PermissionRequest>?,
+                token: PermissionToken?
+            ) {
+                showRationalDialogForPermission()
+            }
+
+        }).onSameThread().check()
+    }
 private fun choosePhotoFromGallery(){
     Dexter.withActivity(this).withPermissions(
-        android.Manifest.permission.READ_EXTERNAL_STORAGE,
-        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
     ).withListener(object: MultiplePermissionsListener{
         override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
 
                 if (report!!.areAllPermissionsGranted()){
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = "image/*"
-                    startActivityForResult(intent, GALLERY)
+                    val galleryintent = Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+                    startActivityForResult(galleryintent, GALLERY)
                 }
 
             }
@@ -194,8 +223,7 @@ private fun choosePhotoFromGallery(){
     }
     private fun saveImageToInternalStorage(bitmap: Bitmap):Uri{
         val wrapper = ContextWrapper(applicationContext)
-        var file = wrapper.getDir( "WedInImages", Context.MODE_PRIVATE)
-        //  var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
+        var file = wrapper.getDir(IMAGE_DIRECTORY, Context.MODE_PRIVATE)
         file = File(file,"${UUID.randomUUID()}.jpg")
 
         try {
