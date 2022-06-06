@@ -24,14 +24,14 @@ class DatabaseHandler(context: Context) :
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val WEDDIN_TABLE = ("CREATE TABLE " + TABLE_WED + "("
+        val weddin_Table = ("CREATE TABLE " + TABLE_WED + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_DATE + " TEXT,"
                 + KEY_COUPLE + " TEXT,"
                 + KEY_COUPLE2 + " TEXT,"
                 + KEY_ADDRESS + " TEXT,"
                 + KEY_IMAGE + " TEXT)")
-        db?.execSQL(WEDDIN_TABLE)
+        db?.execSQL(weddin_Table)
 
     }
 
@@ -57,11 +57,11 @@ class DatabaseHandler(context: Context) :
 
 
     @SuppressLint("Range")
-    fun eventList(): ArrayList<SqliteDatabase> {
+    fun getEventList(): ArrayList<SqliteDatabase> {
         val eventList = ArrayList<SqliteDatabase>()
         val selectQuery = "SELECT * FROM $TABLE_WED"
         val db = this.readableDatabase
-        val cursor: Cursor? = null
+       // val cursor: Cursor? = null
 
         try {
           val cursor: Cursor =  db.rawQuery(selectQuery, null)

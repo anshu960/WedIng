@@ -37,6 +37,11 @@ open class EventAdapter (
         return list.size
     }
     private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
+          val main = view.main
+          val name = view.couple
+          val couple = view.couple2
+          val address = view.address
+          val date = view.date_txt
+          val img = view.couple_img
     }
 }

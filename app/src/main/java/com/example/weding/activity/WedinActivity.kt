@@ -1,5 +1,6 @@
 package com.example.weding.activity
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -48,17 +49,12 @@ class WedinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_wedin)
 
         supportActionBar!!.hide()
-       // val list = ArrayList<DataEvent>()
-       // val adapterevent: Adapter?
+
         edit_floating_button.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, ADD_PLACE_ACTIVITY_CODE)
         }
-
-       // adapterevent = Adapter(list)
-      //  recyclerView.layoutManager = LinearLayoutManager(this)
-      //  recyclerView.adapter = adapterevent
-
+        getEventListDB()
 
         Add_btn.setOnClickListener {
             onAddButtonClicked()
@@ -66,7 +62,7 @@ class WedinActivity : AppCompatActivity() {
         edit_floating_button.setOnClickListener {
             startActivity(Intent(this, ContentActivity::class.java))
         }
-        //getEventListDB()
+
     }
 
     private fun onAddButtonClicked() {
@@ -92,25 +88,39 @@ class WedinActivity : AppCompatActivity() {
             Add_btn.startAnimation(rotateClose)
         }
     }
-   /* private fun setEventRecyclerView(eventList: ArrayList<SqliteDatabase>) {
+    private fun setupEventRecycler(eventList: ArrayList<SqliteDatabase>){
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
-        val Adapter = EventAdapter(this, eventList)
-        recyclerView.adapter = Adapter
+        val placeAdapter = EventAdapter(this, eventList)
+        recyclerView.adapter = placeAdapter
     }
-    private fun getEventListDB(){
-        val dbHandler = DatabaseHandler(this)
-        val geteventList : ArrayList<SqliteDatabase> = dbHandler.eventList()
-        if (geteventList.size > 0){
-            recyclerView.visibility = View.VISIBLE
-            tv_no_record_available.visibility = View.GONE
-            setEventRecyclerView(geteventList)
-            }else{
-                recyclerView.visibility = View.GONE
-                tv_no_record_available.visibility = View.VISIBLE
-        }
+   private fun getEventListDB(){
+       val dbHandler = DatabaseHandler(this)
+       val getEventList : ArrayList<SqliteDatabase> = dbHandler.getEventList()
 
-    } */
+       if (getEventList.size > 0){
+           recyclerView.visibility = View.VISIBLE
+           tv_no_record_available.visibility = View.GONE
+           setupEventRecycler(getEventList)
+           }else{
+               recyclerView.visibility = View.GONE
+               tv_no_record_available.visibility = View.VISIBLE
+       }
+   }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == ADD_PLACE_ACTIVITY_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                getEventListDB()
+            }else{
+                Log.e("Activity", "Cancelled")
+            }
+        }
+    }
+    companion object{
+        var ADD_PLACE_ACTIVITY_CODE = 1
+    }
 }
 
 
