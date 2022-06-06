@@ -5,6 +5,9 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weding.R
 import com.example.weding.activity.database.SqliteDatabase
@@ -37,11 +40,11 @@ open class EventAdapter (
         return list.size
     }
     private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
-          val main = view.main
-          val name = view.couple
-          val couple = view.couple2
-          val address = view.address
-          val date = view.date_txt
-          val img = view.couple_img
+          val main: ConstraintLayout = view.main
+          val name: TextView = view.couple
+          val couple: TextView = view.couple2
+          val address: TextView = view.address
+          val date: TextView = view.date_txt
+          val img: ImageView = view.couple_img
     }
 }
