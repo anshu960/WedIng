@@ -12,7 +12,7 @@ class DatabaseHandler(context: Context) :
    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "WedingDatabase"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 5
         private const val TABLE_WED = "WedingTable"
 
         private const val KEY_ID = "_id"
