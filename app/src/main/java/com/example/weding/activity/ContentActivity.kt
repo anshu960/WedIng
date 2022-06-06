@@ -106,8 +106,8 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                             ImageView.toString()
                         )
                     val dbHandler = DatabaseHandler(this)
-                    val addWedding = dbHandler.addWedding(sqliteDatabase)
-                    if (addWedding > 0){
+                    val addwedding = dbHandler.addWedding(sqliteDatabase)
+                    if (addwedding > 0){
                         Toast.makeText(this,
                         "The Event details are inserted successfully.",
                         Toast.LENGTH_SHORT).show()
@@ -119,7 +119,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
+    @Deprecated("Deprecated in Java")
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK){
