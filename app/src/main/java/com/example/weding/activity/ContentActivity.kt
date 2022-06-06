@@ -196,7 +196,7 @@ private fun choosePhotoFromGallery(){
 }
 
     private fun showRationalDialogForPermission() {
-        AlertDialog.Builder(this).setMessage("It looks like you have turned off permission required for this feature. I t can be enabled under Application Settings")
+        AlertDialog.Builder(this).setMessage("It looks like you have turned off permission required for this feature. It can be enabled under Application Settings")
             .setPositiveButton("GO TO SETTINGS")
             {
                 _, _ ->
