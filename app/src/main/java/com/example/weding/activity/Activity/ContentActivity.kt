@@ -39,6 +39,7 @@ import java.util.*
 class ContentActivity : AppCompatActivity(), View.OnClickListener {
     private var cal = Calendar.getInstance()
     private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
+    private lateinit var dbHelper: DatabaseHandler
     private var saveImageToInternalStorage : Uri? = null
 
 
@@ -54,6 +55,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             updateDateInView()
         }
         updateDateInView()
+        dbHelper = DatabaseHandler(this)
         date_et.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
         btn_save.setOnClickListener(this)

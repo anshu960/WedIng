@@ -14,10 +14,15 @@ import com.example.weding.activity.database.SqliteDatabase
 import kotlinx.android.synthetic.main.activity_content.view.*
 import kotlinx.android.synthetic.main.event_list.view.*
 
-open class EventAdapter (
-     private val context: Context,
-     private var list: ArrayList<SqliteDatabase>
-     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+open class EventAdapter ()
+      : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    private var context: Context? = null
+    private var list: ArrayList<SqliteDatabase>? = null
+
+    constructor(context: Context, list: ArrayList<SqliteDatabase>?) : this(){
+        this.context = context
+        this.list = list
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
             LayoutInflater.from(context).inflate(R.layout.event_list,parent,false)
@@ -25,26 +30,41 @@ open class EventAdapter (
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val model = list[position]
+        val model = list?.get(position)
 
         if (holder is MyViewHolder){
-            holder.itemView.ImageView.setImageURI(Uri.parse(model.image))
-            holder.itemView.couple.text = model.coupleName
-            holder.itemView.couple2.text = model.coupleName2
-            holder.itemView.address.text = model.address
-            holder.itemView.date_txt.text = model.date
+            if (model != null) {
+                holder.itemView.ImageView.setImageURI(Uri.parse(model.image))
+            }
+            if (model != null) {
+                holder.itemView.couple.text = model.coupleName
+            }
+            if (model != null) {
+                holder.itemView.couple2.text = model.coupleName2
+            }
+            if (model != null) {
+                holder.itemView.address.text = model.address
+            }
+            if (model != null) {
+                holder.itemView.date_txt.text = model.date
+            }
+            if (model != null){
+                holder.itemView.setOnClickListener {
+
+                }
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list!!.size
     }
     private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
-          val main: ConstraintLayout = view.main
-          val name: TextView = view.couple
-          val couple: TextView = view.couple2
-          val address: TextView = view.address
-          val date: TextView = view.date_txt
-          val img: ImageView = view.couple_img
+          val main: ConstraintLayout = itemView.main
+          val name: TextView = itemView.couple
+          val couple: TextView = itemView.couple2
+          val address: TextView = itemView.address
+          val date: TextView = itemView.date_txt
+          val img: ImageView = itemView.couple_img
     }
 }
