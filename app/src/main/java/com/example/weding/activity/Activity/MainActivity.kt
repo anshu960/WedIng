@@ -1,4 +1,4 @@
-package com.example.weding.activity
+package com.example.weding.activity.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

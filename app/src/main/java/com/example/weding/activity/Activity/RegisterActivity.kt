@@ -1,4 +1,4 @@
-package com.example.weding.activity
+package com.example.weding.activity.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
