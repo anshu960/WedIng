@@ -15,25 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
-            android:name=".activity.ContentActivity"
+            android:name=".activity.Activity.ContentActivity"
             android:screenOrientation="portrait"
             android:exported="false"
-            android:parentActivityName=".activity.WedinActivity"/>
+            android:parentActivityName=".activity.Activity.WedinActivity"/>
         <activity
-            android:name=".activity.WedingActivity"
+            android:name=".activity.Activity.WedingActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.WedinActivity"
+            android:name=".activity.Activity.WedinActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.Activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegisterActivity"
+            android:name=".activity.Activity.RegisterActivity"
             android:exported="false" />
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.Activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"
+        <activity android:name=".activity.Activity.MainActivity"
             tools:ignore="MissingClass" />
     </application>
 
