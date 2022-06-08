@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -55,7 +54,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             updateDateInView()
         }
         updateDateInView()
-        dbHelper = DatabaseHandler(this)
+       // dbHelper = DatabaseHandler(this)
         date_et.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
         btn_save.setOnClickListener(this)
@@ -107,10 +106,11 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                             address.text.toString(),
                             ImageView.toString()
                         )
-                    val dbHandler = DatabaseHandler(this)
+                   val dbHandler = DatabaseHandler(this)
                     val addwedding = dbHandler.addWedding(sqliteDatabase)
                     if (addwedding > 0){
                         setResult(Activity.RESULT_OK)
+                        Toast.makeText(this, "Successfully insert Data", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     }
