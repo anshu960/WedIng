@@ -87,7 +87,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nameEt"
+            android:id="@+id/Email_Id"
             style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="345dp"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Sign">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textinput"
+                android:id="@+id/emailEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +114,7 @@
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameEt">
+            app:layout_constraintTop_toBottomOf="@+id/Email_Id">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textpassword"
