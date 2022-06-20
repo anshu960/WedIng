@@ -1,19 +1,31 @@
 package com.example.weding.activity.Activity
 
-import android.content.Intent
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.weding.R
-import kotlinx.android.synthetic.main.activity_login.*
+import androidx.appcompat.app.ActionBar
+import com.example.weding.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
+    //ViewBinding
+    private lateinit var binding: ActivityLoginBinding
+
+    //ActionBar
+    private lateinit var actionBar: ActionBar
+
+    //ProgressDialog
+    private lateinit var progressDialog: ProgressDialog
+
+    //firebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        supportActionBar!!.hide()
-        signin.setOnClickListener {
-            startActivity(Intent(this, WedinActivity::class.java))
-            finish()
-        }
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        actionBar = supportActionBar!!
+        actionBar.title = "Login"
+
+
     }
 }

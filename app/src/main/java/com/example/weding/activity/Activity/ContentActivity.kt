@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.weding.R
 import com.example.weding.activity.database.DatabaseHandler
 import com.example.weding.activity.database.SqliteDatabase
+import com.example.weding.activity.model.HappyPlaceModel
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -40,6 +41,8 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
     private lateinit var dbHelper: DatabaseHandler
     private var saveImageToInternalStorage : Uri? = null
+    private var mLatitude : Double = 0.0
+    private var mLongitude : Double = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,16 +101,18 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     saveImageToInternalStorage == null ->{
                         Toast.makeText(this, "Please select an Image", Toast.LENGTH_SHORT).show()
                     }else ->{
-                        val sqliteDatabase = SqliteDatabase(
+                        val happyPlaceModel = HappyPlaceModel(
                             0,
                            name_et.text.toString(),
                             couple_et.text.toString(),
                             date.text.toString(),
                             address.text.toString(),
-                            ImageView.toString()
+                            ImageView.toString(),
+                            mLatitude,
+                            mLongitude
                         )
                    val dbHandler = DatabaseHandler(this)
-                    val addwedding = dbHandler.addWedding(sqliteDatabase)
+                    val addwedding = dbHandler.addHappyPlace(happyPlaceModel)
                     if (addwedding > 0){
                         setResult(Activity.RESULT_OK)
                         Toast.makeText(this, "Successfully insert Data", Toast.LENGTH_SHORT).show()

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1060310749615",
+    "project_id": "fir-login-70a92",
+    "storage_bucket": "fir-login-70a92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060310749615:android:dc998b376ab8041f185f5a",
+        "android_client_info": {
+          "package_name": "com.example.weding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060310749615-aqoj4tr6ku0j6j1g1nvcna0mp4vckigh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.weding",
+            "certificate_hash": "bdc1dcd07562219520428511bad0275f8f545203"
+          }
+        },
+        {
+          "client_id": "1060310749615-spg2tkd603lkt8bq79np62v21p578o6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADac0TVII8uDJEbGMaUDrHkjKB92mAGsQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060310749615-spg2tkd603lkt8bq79np62v21p578o6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
