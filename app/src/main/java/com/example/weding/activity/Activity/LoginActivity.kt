@@ -84,6 +84,8 @@ class LoginActivity : AppCompatActivity() {
               startActivity(Intent(this, WedinActivity::class.java))
               finish()
             }
+
+
             .addOnFailureListener { e->
                 progressDialog.dismiss()
                 Toast.makeText(this, "Login failed due to ${e.message}", Toast.LENGTH_SHORT).show()
