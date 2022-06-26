@@ -7,86 +7,93 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.weding.activity.model.HappyPlaceModel
 
 class DatabaseHandler(context: Context) :
-   SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
     companion object {
-        private const val DATABASE_NAME = "WedingDatabase"
-        private const val DATABASE_VERSION =  1
-        private const val TABLE_WED = "WedingTable"
+        private const val DATABASE_VERSION = 1
+        private const val DATABASE_NAME = "HappyPlacesDatabase"
+        private const val TABLE_HAPPY_PLACE = "HappyPlacesTable"
 
         private const val KEY_ID = "_id"
-        private const val KEY_COUPLE = "couple1"
-        private const val KEY_COUPLE2 = "couple2"
-        private const val KEY_ADDRESS = "address"
-        private const val KEY_DATE = "date"
+        private const val KEY_TITLE = "title"
         private const val KEY_IMAGE = "image"
+        private const val KEY_DESCRIPTION = "description"
+        private const val KEY_DATE = "date"
+        private const val KEY_LOCATION = "location"
+        private const val KEY_LATITUDE = "latitude"
+        private const val KEY_LONGITUDE = "longitude"
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val weddin_Table = ("CREATE TABLE " + TABLE_WED + "("
+        val CREATE_HAPPY_PLACE_TABLE = ("CREATE TABLE " + TABLE_HAPPY_PLACE + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
-                + KEY_DATE + " TEXT,"
-                + KEY_COUPLE + " TEXT,"
-                + KEY_COUPLE2 + " TEXT,"
-                + KEY_ADDRESS + " TEXT,"
-                + KEY_IMAGE + " TEXT)")
-        db?.execSQL(weddin_Table)
-
+                + KEY_TITLE + " TEXT,"
+                + KEY_IMAGE + " TEXT,"
+                + KEY_DESCRIPTION + " TEXT,"
+                + KEY_DATE + " TEXT ,"
+                + KEY_LOCATION + " TEXT,"
+                + KEY_LATITUDE + " TEXT,"
+                + KEY_LONGITUDE + " TEXT)"
+                )
+        db?.execSQL(CREATE_HAPPY_PLACE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_WED")
+        db!!.execSQL("DROP TABLE IF EXISTS $TABLE_HAPPY_PLACE")
         onCreate(db)
     }
 
-    fun addWedding(wedding: SqliteDatabase): Long {
+    fun addHappyPlace(happyPlace: HappyPlaceModel): Long {
         val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put(KEY_ADDRESS, wedding.address)
-        contentValues.put(KEY_COUPLE, wedding.coupleName)
-        contentValues.put(KEY_COUPLE2, wedding.coupleName2)
-        contentValues.put(KEY_DATE, wedding.date)
-        contentValues.put(KEY_IMAGE, wedding.image)
 
-        val result = db.insert(TABLE_WED, null, contentValues)
+        val contentValues = ContentValues()
+        contentValues.put(KEY_TITLE, happyPlace.title)
+        contentValues.put(KEY_IMAGE, happyPlace.image)
+        contentValues.put(KEY_DESCRIPTION, happyPlace.description)
+        contentValues.put(KEY_DATE, happyPlace.date)
+        contentValues.put(KEY_LOCATION, happyPlace.location)
+        contentValues.put(KEY_LATITUDE, happyPlace.latitude)
+        contentValues.put(KEY_LONGITUDE, happyPlace.longitude)
+
+        val result = db.insert(TABLE_HAPPY_PLACE, null, contentValues)
+
         db.close()
         return result
-
     }
-
-
-
     @SuppressLint("Range")
-    fun getEventList(): ArrayList<SqliteDatabase> {
-        val eventList = ArrayList<SqliteDatabase>()
-        val selectQuery = "SELECT * FROM $TABLE_WED"
+    fun getHappyPlacesList():ArrayList<HappyPlaceModel>{
+        val happyPlaceList : ArrayList<HappyPlaceModel> = ArrayList<HappyPlaceModel>()
+        val selectQuery = "SELECT * FROM $TABLE_HAPPY_PLACE"
         val db = this.readableDatabase
 
         try {
-          val cursor: Cursor =  db.rawQuery(selectQuery, null)
+            val cursor : Cursor = db.rawQuery(selectQuery, null)
             if (cursor.moveToFirst()){
                 do {
-                    val place = SqliteDatabase(
+                    val place = HappyPlaceModel(
                         cursor.getInt(cursor.getColumnIndex(KEY_ID)),
-                        cursor.getString(cursor.getColumnIndex(KEY_COUPLE)),
-                        cursor.getString(cursor.getColumnIndex(KEY_COUPLE2)),
+                        cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(KEY_IMAGE)),
+                        cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)),
                         cursor.getString(cursor.getColumnIndex(KEY_DATE)),
-                        cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)),
-                        cursor.getString(cursor.getColumnIndex(KEY_IMAGE))
-                            )
-                    eventList.add(place)
+                        cursor.getString(cursor.getColumnIndex(KEY_LOCATION)),
+                        cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE)),
+                        cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE))
+
+                    )
+                    happyPlaceList.add(place)
                 }while (cursor.moveToNext())
             }
             cursor.close()
-        } catch (e: SQLiteException) {
+        }catch (e: SQLiteException){
             db.execSQL(selectQuery)
             return ArrayList()
         }
-        return eventList
+        return happyPlaceList
     }
 
 }
-
-
-

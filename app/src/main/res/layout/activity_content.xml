@@ -6,50 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".activity.Activity.ContentActivity">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_couple"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="24dp"
-        android:hint="Couple's Name"
-        app:layout_constraintBottom_toTopOf="@+id/date_et"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_place"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPlace"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/CustomToolbarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:hint="Enter Your Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_add_place">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/couple_et"
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/date_et"
+        android:id="@+id/couple"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Date"
+        android:hint="Enter Couple's Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_couple">
+        app:layout_constraintTop_toBottomOf="@+id/name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/date"
+            android:id="@+id/et_couple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/address_et"
+        android:id="@+id/date"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Address"
+        android:hint="Enter Date"
+        android:inputType="text"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_et">
+        app:layout_constraintTop_toBottomOf="@+id/couple">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/address"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="Enter Your Address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_address"
@@ -57,52 +93,30 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_place_image"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="26dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_baseline_image_24"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/tv_add_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="119dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="119dp"
         android:text="ADD IMAGE"
         android:textColor="#2196F3"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ImageView"
-        app:layout_constraintTop_toBottomOf="@+id/address_et" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintStart_toEndOf="@+id/iv_place_image" />
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="58dp"
-        android:text="SAVE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageView" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_name"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter your name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/ImageView"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_et"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

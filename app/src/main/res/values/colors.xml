@@ -16,7 +16,9 @@
     <color name="black_01">#F5ECB5</color>
     <color name="white_01">#C8A76E</color>
     <color name="head">#93632E</color>
+    <color name="colorPlace">#63ace5</color>
     <color name="text">#C6A070</color>
+    <color name="colorPrimary">#2a4d69</color>
     <color name="background">#F7F2E8</color>
 
 </resources>

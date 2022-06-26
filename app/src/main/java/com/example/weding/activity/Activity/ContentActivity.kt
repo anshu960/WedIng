@@ -15,6 +15,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.weding.R
@@ -32,6 +33,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
+import java.lang.Integer.toString
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,7 +50,10 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_content)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+      //  setSupportActionBar(toolbar_add_place)
+      //  supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
 
         dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -58,7 +63,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
         }
         updateDateInView()
        // dbHelper = DatabaseHandler(this)
-        date_et.setOnClickListener(this)
+        et_date.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
         btn_save.setOnClickListener(this)
 
@@ -89,10 +94,10 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
              }
             R.id.btn_save ->{
                 when {
-                    name_et.text.isNullOrEmpty() -> {
+                    et_name.text.isNullOrEmpty() -> {
                         Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
                     }
-                    couple_et.text.isNullOrEmpty() -> {
+                    et_couple.text.isNullOrEmpty() -> {
                         Toast.makeText(this, "Please enter your couple's name", Toast.LENGTH_SHORT).show()
                     }
                     et_address.text.isNullOrEmpty() -> {
@@ -103,11 +108,11 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     }else ->{
                         val happyPlaceModel = HappyPlaceModel(
                             0,
-                           name_et.text.toString(),
-                            couple_et.text.toString(),
-                            date.text.toString(),
-                            address.text.toString(),
-                            ImageView.toString(),
+                            et_name.text.toString(),
+                            saveImageToInternalStorage.toString(),
+                            et_couple.text.toString(),
+                            et_date.text.toString(),
+                            et_address.text.toString(),
                             mLatitude,
                             mLongitude
                         )
@@ -134,7 +139,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                         val selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                        saveImageToInternalStorage =  saveImageToInternalStorage(selectedImageBitmap)
 
-                        ImageView.setImageBitmap(selectedImageBitmap)
+                        iv_place_image.setImageBitmap(selectedImageBitmap)
                     }catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this@ContentActivity, "Failed !", Toast.LENGTH_SHORT).show()
@@ -144,7 +149,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             }else if (requestCode == CAMERA_CODE){
                 val photo : Bitmap = data!!.extras!!.get("data") as Bitmap
                 saveImageToInternalStorage = saveImageToInternalStorage(photo)
-                ImageView.setImageBitmap(photo)
+                iv_place_image.setImageBitmap(photo)
             }
         }
     }
@@ -223,7 +228,7 @@ private fun choosePhotoFromGallery(){
     private fun updateDateInView() {
         val myFormat = "dd.MM.yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
-        date.setText(sdf.format(cal.time).toString())
+        et_date.setText(sdf.format(cal.time).toString())
     }
     private fun saveImageToInternalStorage(bitmap: Bitmap):Uri{
         val wrapper = ContextWrapper(applicationContext)
