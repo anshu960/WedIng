@@ -1,19 +1,11 @@
 package com.example.weding.activity.Activity
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.Adapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
-import com.example.weding.activity.database.DataEvent
 import com.example.weding.activity.database.DatabaseHandler
-import com.example.weding.activity.database.SqliteDatabase
 import com.example.weding.activity.model.HappyPlaceModel
 import kotlinx.android.synthetic.main.activity_wedin.*
 
