@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.Activity.ContentActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_add_place"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPlace"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/CustomToolbarStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
@@ -32,11 +21,10 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="8dp"
         android:hint="Enter Your Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_add_place">
+        tools:layout_editor_absoluteY="64dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"

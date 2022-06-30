@@ -15,12 +15,10 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.weding.R
 import com.example.weding.activity.database.DatabaseHandler
-import com.example.weding.activity.database.SqliteDatabase
 import com.example.weding.activity.model.HappyPlaceModel
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -28,12 +26,10 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.activity_content.*
-import kotlinx.android.synthetic.main.event_list.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
-import java.lang.Integer.toString
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -63,7 +59,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
         }
         updateDateInView()
        // dbHelper = DatabaseHandler(this)
-        et_date.setOnClickListener(this)
+        date.setOnClickListener(this)
         tv_add_image.setOnClickListener(this)
         btn_save.setOnClickListener(this)
 
