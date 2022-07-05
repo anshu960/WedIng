@@ -82,18 +82,19 @@
             android:text="Please enter the verification code we sent to 91-9955467337 "
             android:textAlignment="center"
             android:textColor="#777777"/>
+
         <EditText
             android:id="@+id/codeEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="#fff"
-            android:hint="+91-9955467337"
+            android:hint="123456"
             android:inputType="phone"
             android:padding="15dp"
             android:textAlignment="center"
             android:textColor="#000"
-            android:textColorHint="#c5c5c5"/>
+            android:textColorHint="#c5c5c5" />
         <TextView
             android:id="@+id/resendCodeTv"
             android:layout_width="match_parent"
