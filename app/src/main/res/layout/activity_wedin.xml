@@ -42,8 +42,8 @@
             app:layout_constraintStart_toEndOf="@+id/menu_img"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/scan_img"
+        <ImageButton
+            android:id="@+id/btn_scan"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="24dp"
