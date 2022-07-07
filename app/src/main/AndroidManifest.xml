@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.weding">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
+            android:name=".RecordDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Activity.ContentActivity"
-            android:screenOrientation="portrait"
             android:exported="false"
-            android:parentActivityName=".activity.Activity.WedinActivity"/>
+            android:parentActivityName=".activity.Activity.WedinActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.Activity.WedingActivity"
             android:exported="false" />
@@ -31,7 +35,6 @@
         <activity
             android:name=".activity.Activity.RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".activity.Activity.SplashActivity"
             android:exported="true">
@@ -41,7 +44,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Activity.MainActivity"
+        <activity
+            android:name=".activity.Activity.MainActivity"
             tools:ignore="MissingClass" />
     </application>
 
