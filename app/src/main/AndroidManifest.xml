@@ -16,9 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
-            android:name=".RecordDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.Activity.ContentActivity"
             android:exported="false"
             android:parentActivityName=".activity.Activity.WedinActivity"

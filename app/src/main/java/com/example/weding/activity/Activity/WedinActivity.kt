@@ -4,12 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
-import com.example.weding.activity.Adapters.AdapterRecord
 import com.example.weding.activity.database.DatabaseHandler
 import com.example.weding.activity.model.HappyPlaceModel
 import com.google.zxing.integration.android.IntentIntegrator
@@ -37,8 +35,8 @@ class WedinActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-        val placesAdapter = AdapterRecord(this, happyPlaceList)
-        recyclerView.adapter = placesAdapter
+       // val placesAdapter = AdapterRecord(this, happyPlaceList)
+       // recyclerView.adapter = placesAdapter
 
     }
     private fun getHappyPlacesListFromLocalDB(){
