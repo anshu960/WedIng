@@ -116,7 +116,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                     val addwedding = dbHandler.addHappyPlace(happyPlaceModel)
                     if (addwedding > 0){
                         setResult(Activity.RESULT_OK)
-                        Toast.makeText(this, "Successfully insert Data", Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(this, "Successfully insert Data", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     }

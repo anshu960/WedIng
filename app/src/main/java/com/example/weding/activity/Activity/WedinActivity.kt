@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +29,7 @@ class WedinActivity : AppCompatActivity() {
         }
         Add_btn.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, ADD_PLACE_ACTIVITY_REQUEST_CODE)
         }
         getHappyPlacesListFromLocalDB()
     }
@@ -55,6 +56,14 @@ class WedinActivity : AppCompatActivity() {
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ADD_PLACE_ACTIVITY_REQUEST_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                getHappyPlacesListFromLocalDB()
+            }
+            else{
+                Log.e("Activity", "Cancelled or Back pressed")
+            }
+        }
         if (resultCode == Activity.RESULT_OK) {
             val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
             if (result != null) {
@@ -67,6 +76,9 @@ class WedinActivity : AppCompatActivity() {
                 super.onActivityResult(requestCode, resultCode, data)
             }
         }
+    }
+    companion object{
+       var ADD_PLACE_ACTIVITY_REQUEST_CODE = 1
     }
 
     }
