@@ -135,7 +135,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
                         val selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                        saveImageToInternalStorage =  saveImageToInternalStorage(selectedImageBitmap)
 
-                        iv_place_image.setImageBitmap(selectedImageBitmap)
+                        iv_place_images.setImageBitmap(selectedImageBitmap)
                     }catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this@ContentActivity, "Failed !", Toast.LENGTH_SHORT).show()
@@ -145,7 +145,7 @@ class ContentActivity : AppCompatActivity(), View.OnClickListener {
             }else if (requestCode == CAMERA_CODE){
                 val photo : Bitmap = data!!.extras!!.get("data") as Bitmap
                 saveImageToInternalStorage = saveImageToInternalStorage(photo)
-                iv_place_image.setImageBitmap(photo)
+                iv_place_images.setImageBitmap(photo)
             }
         }
     }
