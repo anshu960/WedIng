@@ -53,6 +53,20 @@
                     android:textColor="@color/item_happy"
                     android:textSize="@dimen/textsize"
                     tools:text="Couple" />
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/item_happy"
+                    android:textSize="@dimen/textsize"
+                    tools:text="Address" />
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/item_happy"
+                    android:textSize="@dimen/textsize"
+                    tools:text="Date" />
 
             </LinearLayout>
 
