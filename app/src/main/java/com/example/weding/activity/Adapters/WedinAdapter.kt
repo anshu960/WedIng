@@ -14,6 +14,9 @@ open class WedinAdapter (
     private val context: Context,
     private var list: ArrayList<HappyPlaceModel>
         ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
+    private var onClickListener: OnClickListener ?= null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
             LayoutInflater.from(context).inflate(
@@ -22,6 +25,10 @@ open class WedinAdapter (
                 false
             )
         )
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener){
+        this.onClickListener = onClickListener
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -33,11 +40,21 @@ open class WedinAdapter (
             holder.itemView.tvDescription.text = model.description
             holder.itemView.tvAddress.text = model.location
             holder.itemView.tvDate.text = model.date
+
+            holder.itemView.setOnClickListener {
+                if (onClickListener != null){
+                    onClickListener!!.onClick(position, model)
+                }
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    interface OnClickListener{
+        fun onClick(position: Int, model: HappyPlaceModel)
     }
     private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }

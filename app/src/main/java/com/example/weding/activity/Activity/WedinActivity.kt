@@ -40,6 +40,15 @@ class WedinActivity : AppCompatActivity() {
         val placesAdapter = WedinAdapter(this, happyPlaceList)
         recyclerView.adapter = placesAdapter
 
+        placesAdapter.setOnClickListener(object : WedinAdapter.OnClickListener{
+            override fun onClick(position: Int, model: HappyPlaceModel) {
+                val intent = Intent(this@WedinActivity,
+                    WedinDetailActivity::class.java)
+                intent.putExtra(EXTRA_PLACE_DETAILS, model)
+                startActivity(intent)
+            }
+        })
+
     }
     private fun getHappyPlacesListFromLocalDB(){
         val dbHandler = DatabaseHandler(this)
@@ -79,6 +88,7 @@ class WedinActivity : AppCompatActivity() {
     }
     companion object{
        var ADD_PLACE_ACTIVITY_REQUEST_CODE = 1
+        var EXTRA_PLACE_DETAILS = "extra_place_details"
     }
 
     }
