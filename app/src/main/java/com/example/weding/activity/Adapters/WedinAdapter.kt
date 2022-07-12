@@ -10,7 +10,7 @@ import com.example.weding.R
 import com.example.weding.activity.model.HappyPlaceModel
 import kotlinx.android.synthetic.main.item_happy_places.view.*
 
-open class HappyPlacesAdapter (
+open class WedinAdapter (
     private val context: Context,
     private var list: ArrayList<HappyPlaceModel>
         ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){

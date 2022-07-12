@@ -1,5 +1,7 @@
 package com.example.weding.activity.model
 
+import java.io.Serializable
+
 data class HappyPlaceModel (
     val id: Int,
     val title: String,
