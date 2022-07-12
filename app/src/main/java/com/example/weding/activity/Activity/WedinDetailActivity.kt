@@ -11,11 +11,14 @@ class WedinDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wedin_detail)
+       // val happyPlaceDetailModel : HappyPlaceModel?= null
         supportActionBar?.hide()
+
+
 
       var happyPlaceDetailModel : HappyPlaceModel?= null
 
-      /*  if (intent.hasExtra(WedinActivity.EXTRA_PLACE_DETAILS)){
+       /* if (intent.hasExtra(WedinActivity.EXTRA_PLACE_DETAILS)){
             happyPlaceDetailModel = intent.getSerializableExtra(WedinActivity.EXTRA_PLACE_DETAILS) as HappyPlaceModel
         } */
 
@@ -27,9 +30,12 @@ class WedinDetailActivity : AppCompatActivity() {
            toolbar_happy_place_detail.setNavigationOnClickListener {
                onBackPressed()
            }
+            if (intent.hasExtra(WedinActivity.EXTRA_PLACE_DETAILS)){
+                happyPlaceDetailModel = intent.getSerializableExtra(WedinActivity.EXTRA_PLACE_DETAILS) as HappyPlaceModel
+            }
 
-            iv_image.setImageURI(Uri.parse(happyPlaceDetailModel.image))
-            tv_description.text = happyPlaceDetailModel.description
+            iv_image.setImageURI(Uri.parse(happyPlaceDetailModel!!.image))
+            tv_description.text = happyPlaceDetailModel.title
             tv_address.text = happyPlaceDetailModel.location
         }
     }
