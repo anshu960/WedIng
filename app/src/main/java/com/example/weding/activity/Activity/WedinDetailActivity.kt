@@ -18,9 +18,6 @@ class WedinDetailActivity : AppCompatActivity() {
 
       var happyPlaceDetailModel : HappyPlaceModel?= null
 
-       /* if (intent.hasExtra(WedinActivity.EXTRA_PLACE_DETAILS)){
-            happyPlaceDetailModel = intent.getSerializableExtra(WedinActivity.EXTRA_PLACE_DETAILS) as HappyPlaceModel
-        } */
 
         if (happyPlaceDetailModel != null){
            setSupportActionBar(toolbar_happy_place_detail)
