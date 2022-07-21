@@ -32,8 +32,10 @@ class WedinDetailActivity : AppCompatActivity() {
             }
 
             iv_image.setImageURI(Uri.parse(happyPlaceDetailModel!!.image))
-            tv_description.text = happyPlaceDetailModel.title
             tv_address.text = happyPlaceDetailModel.location
+            tv_name.text = happyPlaceDetailModel.title
+            tv_couple.text = happyPlaceDetailModel.description
+            tv_date.text = happyPlaceDetailModel.date
         }
     }
 }

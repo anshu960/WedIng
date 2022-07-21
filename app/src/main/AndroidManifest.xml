@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
+            android:name=".activity.Activity.User_interface"
+            android:exported="false" />
+        <activity
             android:name=".activity.Activity.WedinDetailActivity"
             android:exported="false" />
         <activity

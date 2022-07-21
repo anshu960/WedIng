@@ -42,7 +42,7 @@
             app:layout_constraintStart_toEndOf="@+id/menu_img"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_scan"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -109,7 +109,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="409dp"
-        android:layout_height="625dp"
+        android:layout_height="630dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
