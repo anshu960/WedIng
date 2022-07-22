@@ -8,4 +8,5 @@
     <string name="no_event_found_yet">No Event Found yet. Kindly add one.</string>
     <string name="resend">Didn\'t get OTP? <b>Resend</b></string>
     <string name="image_content_description">image</string>
+    <string name="note_text_no_happy_places_found_yet">No Happy Places Found Yet. Kindly add one.</string>
 </resources>

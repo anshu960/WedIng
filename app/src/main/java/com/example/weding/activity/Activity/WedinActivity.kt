@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weding.R
 import com.example.weding.activity.Adapters.WedinAdapter
@@ -14,6 +15,7 @@ import com.example.weding.activity.database.DatabaseHandler
 import com.example.weding.activity.model.HappyPlaceModel
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_wedin.*
+import kotlinx.android.synthetic.main.nav_header.*
 
 
 class WedinActivity : AppCompatActivity() {
@@ -21,6 +23,10 @@ class WedinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wedin)
+        navDraw.itemIconTintList = null
+        menu_img.setOnClickListener {
+            drawarLayout.openDrawer(GravityCompat.START)
+        }
 
         supportActionBar?.hide()
         btn_scan.setOnClickListener {
