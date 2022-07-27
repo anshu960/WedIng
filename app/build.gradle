@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
    // debugImplementation 'im.dino:dbinspector:3.4.1@aar'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-analytics-ktx:21.1.0'
