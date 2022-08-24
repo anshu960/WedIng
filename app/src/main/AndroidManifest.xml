@@ -16,13 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
+            android:name=".activity.Activity.HappyPlaceDetailActivity"
+            android:label="DETAILS"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomNoActionBarTheme"
+            android:exported="false" />
+        <activity
             android:name=".activity.Activity.WedinActivity"
             android:exported="false" />
         <activity
             android:name=".activity.Activity.ContentActivity"
             android:label="ADD DETAILS"
             android:screenOrientation="portrait"
-            android:theme="@style/CustomNoActionBarTheme"></activity>
+            android:theme="@style/CustomNoActionBarTheme" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
