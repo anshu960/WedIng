@@ -20,6 +20,10 @@ class WedinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wedin)
         supportActionBar?.hide()
+        btn_scan.setOnClickListener {
+            val scanner = IntentIntegrator(this)
+            scanner.initiateScan()
+        }
         Add_btn.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
             startActivityForResult(intent, ADD_PLACE_ACTIVITY_REQUEST_CODE)
