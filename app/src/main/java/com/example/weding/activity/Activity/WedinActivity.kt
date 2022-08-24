@@ -14,6 +14,7 @@ class WedinActivity : AppCompatActivity() {
         Add_btn.setOnClickListener {
             val intent = Intent(this, ContentActivity::class.java)
             startActivity(intent)
+            //my new update
         }
     }
 }
