@@ -15,36 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_api_key"/>
-        <activity
-            android:name=".activity.Activity.PostActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Activity.User_interface"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Activity.WedinDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Activity.ContentActivity"
-            android:exported="false"
-            android:parentActivityName=".activity.Activity.WedinActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.Activity.WedingActivity"
-            android:exported="false" />
         <activity
             android:name=".activity.Activity.WedinActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.Activity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.Activity.RegisterActivity"
-            android:exported="false" />
+            android:name=".activity.Activity.ContentActivity"
+            android:label="ADD DETAILS"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomNoActionBarTheme"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api_key" />
+
         <activity
             android:name="com.filestack.android.FsActivity"
             android:exported="false" />
