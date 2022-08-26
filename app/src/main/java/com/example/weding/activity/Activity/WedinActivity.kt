@@ -15,12 +15,23 @@ import com.example.weding.activity.Activity.adapter.HappyPlacesAdapter
 import com.example.weding.activity.Activity.model.HappyPlaceModel
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_wedin.*
+import kotlinx.android.synthetic.main.nav_header.*
 
 class WedinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wedin)
         supportActionBar?.hide()
+        navDraw.itemIconTintList = null
+        menu_img.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        navDraw.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.item1 -> Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+            true
+        }
         btn_scan.setOnClickListener {
             val scanner = IntentIntegrator(this)
             scanner.initiateScan()
