@@ -28,7 +28,9 @@ class WedinActivity : AppCompatActivity() {
         }
         navDraw.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.item1 -> Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+                R.id.item1 -> Toast.makeText(applicationContext, "Clicked item", Toast.LENGTH_SHORT).show()
+                R.id.item2 -> Toast.makeText(applicationContext,"Clicked item2",Toast.LENGTH_SHORT).show()
+                R.id.item3 -> Toast.makeText(applicationContext, "Clicked item3",Toast.LENGTH_SHORT).show()
             }
             true
         }

@@ -135,5 +135,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include layout="@layout/nav_header" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
