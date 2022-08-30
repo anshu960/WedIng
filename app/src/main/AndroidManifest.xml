@@ -16,11 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
+            android:name=".activity.Activity.FeedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Activity.HappyPlaceDetailActivity"
+            android:exported="false"
             android:label="DETAILS"
             android:screenOrientation="portrait"
-            android:theme="@style/CustomNoActionBarTheme"
-            android:exported="false" />
+            android:theme="@style/CustomNoActionBarTheme" />
         <activity
             android:name=".activity.Activity.WedinActivity"
             android:exported="false" />
