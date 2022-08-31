@@ -32,7 +32,10 @@ class WedinActivity : AppCompatActivity() {
                     val intent = Intent(this,FeedActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.item2 -> Toast.makeText(applicationContext,"Clicked item2",Toast.LENGTH_SHORT).show()
+                R.id.item2 -> {
+                    val intent = Intent(this,InvitationActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.item3 -> Toast.makeText(applicationContext, "Clicked item3",Toast.LENGTH_SHORT).show()
             }
             true
