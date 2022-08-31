@@ -16,9 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WedIng">
         <activity
-            android:name=".activity.Activity.InvitationActivity"
-            android:label="Invitation"
+            android:name=".activity.Activity.PhotoActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.Activity.InvitationActivity"
+            android:exported="false"
+            android:label="Invitation" />
         <activity
             android:name=".activity.Activity.UploadActivity"
             android:exported="false" />

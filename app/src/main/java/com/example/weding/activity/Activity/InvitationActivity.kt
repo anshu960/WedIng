@@ -2,6 +2,7 @@ package com.example.weding.activity.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.viewpager2.widget.ViewPager2
 import com.example.weding.R
 import com.example.weding.activity.Activity.adapter.ViewPagerAdapter
@@ -13,15 +14,14 @@ import kotlinx.android.synthetic.main.activity_happy_place_detail.*
 import kotlinx.android.synthetic.main.activity_invitation.*
 
 class InvitationActivity : AppCompatActivity() {
+    private lateinit var actionBar: ActionBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_invitation)
-       // supportActionBar!!.hide()
-        val actionBar = supportActionBar
-        actionBar!!.title = "Invitation"
-
+        actionBar = supportActionBar!!
+        actionBar.title = "Invitation"
         actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        actionBar.setDisplayShowHomeEnabled(true)
 
 
 
@@ -43,13 +43,13 @@ class InvitationActivity : AppCompatActivity() {
                 }
             }.attach()
 
-        fun onBackPressed() {
-            super.onBackPressed()
-        }
 
 
     }
 
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
 
 }
