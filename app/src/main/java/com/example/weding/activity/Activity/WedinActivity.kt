@@ -29,7 +29,7 @@ class WedinActivity : AppCompatActivity() {
         navDraw.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.item1 -> {
-                    val intent = Intent(this,FeedActivity::class.java)
+                    val intent = Intent(this,PhotoActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.item2 -> {
