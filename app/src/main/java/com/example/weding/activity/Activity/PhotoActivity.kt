@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.view.View
 import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
@@ -18,6 +19,7 @@ import androidx.core.content.ContextCompat
 import com.example.weding.R
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_content.*
 import kotlinx.android.synthetic.main.activity_photo.*
 
 class PhotoActivity : AppCompatActivity() {
@@ -41,6 +43,7 @@ class PhotoActivity : AppCompatActivity() {
         progressDialog.setTitle("Please Wait")
         progressDialog.setMessage("Uploading Video...")
         progressDialog.setCanceledOnTouchOutside(false)
+
 
         uploadVideoBtn.setOnClickListener {
             title = titleEt.text.toString().trim()

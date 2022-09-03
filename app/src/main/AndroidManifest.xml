@@ -24,7 +24,8 @@
             android:label="Invitation" />
         <activity
             android:name=".activity.Activity.UploadActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Feed"/>
         <activity
             android:name=".activity.Activity.HappyPlaceDetailActivity"
             android:exported="false"

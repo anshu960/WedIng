@@ -37,7 +37,7 @@ class WedinActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.item3 -> {
-                    val intent = Intent(this,PhotoActivity::class.java)
+                    val intent = Intent(this,UploadActivity::class.java)
                     startActivity(intent)
                 }
             }

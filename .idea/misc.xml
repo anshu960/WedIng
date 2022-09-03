@@ -26,8 +26,10 @@
         <entry key="..\:/WedIng/app/src/main/res/menu/menu_nav.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng/app/src/main/res/menu/nav_drawer_menu.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/drawable-anydpi/ic_edit.xml" value="0.1125" />
+        <entry key="..\:/WedIng3/app/src/main/res/drawable-v24/date_shape.xml" value="0.1115" />
         <entry key="..\:/WedIng3/app/src/main/res/drawable-v24/menu.xml" value="0.1125" />
         <entry key="..\:/WedIng3/app/src/main/res/drawable/post_input.xml" value="0.1115" />
+        <entry key="..\:/WedIng3/app/src/main/res/drawable/status.xml" value="0.1115" />
         <entry key="..\:/WedIng3/app/src/main/res/layout/activity_add_happy_place.xml" value="0.1" />
         <entry key="..\:/WedIng3/app/src/main/res/layout/activity_content.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/layout/activity_feed.xml" value="0.22" />
@@ -42,6 +44,7 @@
         <entry key="..\:/WedIng3/app/src/main/res/layout/item_happy_places.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/layout/nav_header.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/layout/post_item.xml" value="0.18" />
+        <entry key="..\:/WedIng3/app/src/main/res/layout/row_video.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/menu/menu_nav.xml" value="0.20364583333333333" />
         <entry key="..\:/WedIng3/app/src/main/res/menu/nav_drawer_menu.xml" value="0.20364583333333333" />
       </map>
