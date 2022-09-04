@@ -25,11 +25,13 @@ import kotlinx.android.synthetic.main.activity_photo.*
 class PhotoActivity : AppCompatActivity() {
     private lateinit var actionBar: ActionBar
     private val VIDEO_PICK_GALLERY_CODE = 100
-    private val VIDEO_PICK_CAMERA_CODE = 101
-    private val  CAMERA_REQUEST_CODE = 102
+    private val IMAGE_PICK_GALLERY_CODE = 101
+    private val VIDEO_PICK_CAMERA_CODE = 102
+    private val  CAMERA_REQUEST_CODE = 103
     private lateinit var cameraPermission:Array<String>
     private lateinit var progressDialog: ProgressDialog
     private var videoUri: Uri? = null
+   // private var imageUri: Uri? = null
     private var title: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,7 +120,7 @@ class PhotoActivity : AppCompatActivity() {
             .setItems(options){ dialogInterface, i->
                 if (i == 0){
                     if (!checkCameraPermission()){
-                        requestCameraPermission()
+                       requestCameraPermission()
                     }
                     else{
                         videoPickCamera()
@@ -150,11 +152,12 @@ class PhotoActivity : AppCompatActivity() {
     }
     private fun videoPickGallery(){
         val intent = Intent()
-        intent.type = "video/*"
+          intent.type = "video/*"
+       // intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(
             Intent.createChooser(intent, "Choose Video"),
-                    VIDEO_PICK_GALLERY_CODE
+            VIDEO_PICK_GALLERY_CODE
         )
 
     }
