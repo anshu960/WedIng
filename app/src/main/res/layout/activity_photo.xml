@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_place_image" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -54,14 +54,20 @@
             android:id="@+id/img_view"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:scrollbars="horizontal" />
+            android:scrollbars="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/image_photo"
-            android:layout_width="match_parent"
+            android:id="@+id/img_photo"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_view"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/nisha" />
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView"

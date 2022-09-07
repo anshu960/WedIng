@@ -113,19 +113,14 @@ class PhotoActivity : AppCompatActivity() {
             img_view.pause()
         }
     }
+
     private fun videoPickDialog() {
        val options = arrayOf("Image","Video")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Pick Video From")
             .setItems(options){ dialogInterface, i->
                 if (i == 0){
-                    if (!checkCameraPermission()){
-                       requestCameraPermission()
-                    }
-                    else{
-                        videoPickCamera()
-                    }
-
+                   imagePickGallery()
                 }
                 else{
                     videoPickGallery()
@@ -134,7 +129,7 @@ class PhotoActivity : AppCompatActivity() {
             }
             .show()
     }
-    private fun requestCameraPermission(){
+   /* private fun requestCameraPermission(){
         ActivityCompat.requestPermissions(
             this,
             cameraPermission,
@@ -149,7 +144,7 @@ class PhotoActivity : AppCompatActivity() {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
         )== PackageManager.PERMISSION_GRANTED
         return result1 && result2
-    }
+    }*/
     private fun videoPickGallery(){
         val intent = Intent()
           intent.type = "video/*"
@@ -161,16 +156,25 @@ class PhotoActivity : AppCompatActivity() {
         )
 
     }
-    private fun videoPickCamera(){
+    private fun imagePickGallery(){
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(
+            Intent.createChooser(intent, "Choose Image"),
+            IMAGE_PICK_GALLERY_CODE
+        )
+    }
+   /* private fun videoPickCamera(){
         val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
         startActivityForResult(intent, VIDEO_PICK_CAMERA_CODE)
-    }
+    }*/
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
     }
 
-    override fun onRequestPermissionsResult(
+/*    override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
@@ -189,17 +193,18 @@ class PhotoActivity : AppCompatActivity() {
                 }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
+    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK){
-            if (requestCode == VIDEO_PICK_CAMERA_CODE){
+            if (requestCode == VIDEO_PICK_GALLERY_CODE){
                 videoUri == data!!.data
                 setVideoToVideoView()
             }
-            else if (requestCode == VIDEO_PICK_GALLERY_CODE){
-               videoUri = data!!.data
-               setVideoToVideoView()
+            else if (requestCode == IMAGE_PICK_GALLERY_CODE){
+                img_photo.setImageURI(data?.data)
+              // videoUri = data!!.data
+              // setVideoToVideoView()
             }
         }
         else{

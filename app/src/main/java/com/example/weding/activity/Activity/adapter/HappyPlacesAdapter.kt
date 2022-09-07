@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weding.R
 import com.example.weding.activity.Activity.model.HappyPlaceModel
-import kotlinx.android.synthetic.main.activity_photo.view.*
 import kotlinx.android.synthetic.main.item_happy_places.view.*
 import kotlinx.android.synthetic.main.item_happy_places.view.iv_place_image
 
@@ -60,5 +59,5 @@ open class HappyPlacesAdapter (
         fun onClick(position: Int, model: HappyPlaceModel)
     }
 
-    private class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
